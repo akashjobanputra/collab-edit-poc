@@ -7,7 +7,8 @@
     "start:yjs": "HOST=0.0.0.0 PORT=3312 npx y-websocket-server",
     "start:express": "node ./bin/www",
     "fe:start": "webpack-dev-server --open-page index.html",
-    "fe:dist": "webpack --mode=production"
+    "fe:dist": "webpack --mode=production",
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
