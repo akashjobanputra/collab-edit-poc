@@ -1,5 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+
+if (process.env.NODE_ENV !== 'production') { 
+  require('dotenv').config()
+}
 
 module.exports = {
   mode: 'development',
@@ -13,13 +18,15 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname),
-    compress: true,
-    publicPath: '/public/'
+    clientLogLevel: 'debug',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'client/index.html'
-    })
+    }),
+    new webpack.DefinePlugin({
+      "process.env.YJS_SERVER": JSON.stringify(process.env.YJS_SERVER),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+    }),
   ]
 }
