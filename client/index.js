@@ -160,3 +160,18 @@ function populateSelect(target, options){
     });
   }
 }
+
+
+/**
+ * BUG: Collaborative not working cross device. Probably not able to connect to yjs server.
+ * A tip from gitter:  That should be pretty simple. You simply need to clone the y-websocket repository and push it to heroku.
+ * Heroku recognizes that this is a nodejs project and executes the "start" script by default (which starts the websocket server). 
+ * 
+ * TODO: create Map of below Samples using jsonToMap.
+ * Sample1: [[2002054554,{"user":{"name":"Nis","color":"blue"},"cursor":{"anchor":{"type":null,"tname":"demo1","item":{"client":3943573794,"clock":3},"assoc":0},"head":{"type":null,"tname":"demo1","item":{"client":3943573794,"clock":3},"assoc":0}}}],[1529470841,{"user":{"name":"akashj","color":"red"},"cursor":{"anchor":{"type":null,"tname":"demo1","item":{"client":3770036896,"clock":3},"assoc":0},"head":{"type":null,"tname":"demo1","item":{"client":3770036896,"clock":3},"assoc":0}}}]]
+ * Sample2: [[2002054554,{"user":{"name":"Nis","color":"blue"},"cursor":{"anchor":{"type":null,"tname":"demo1","item":null,"assoc":0},"head":{"type":null,"tname":"demo1","item":null,"assoc":0}}}],[1529470841,{"user":{"name":"akashj","color":"red"},"cursor":{"anchor":{"type":null,"tname":"demo1","item":{"client":3770036896,"clock":3},"assoc":0},"head":{"type":null,"tname":"demo1","item":{"client":3770036896,"clock":3},"assoc":0}}}]]
+ * 
+ * Write method to extract info, number of users, usernames and their color.
+ * 
+ * // "start:yjs:ser": "YPERSISTENCE=./dbDir DEBUG=y*,-y:connector-message node yjs-server.js --port 3312",
+ */
