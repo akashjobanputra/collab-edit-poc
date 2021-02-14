@@ -14,10 +14,21 @@ console.log('NODE_ENV', process.env.NODE_ENV);
 const docsMap = {};
 var editor, selectedRoom;
 var ydoc, provider, type, binding;
-var username = new Date().valueOf().toString();
+var username = getRandomUsername();
+
+function getRandomUsername() {
+  return `User_${Math.random().toString(36).slice(2, 7)}`
+}
 
 function getCursorColor() {
   return sample(['blue', 'red', 'orange', 'green']);
+}
+
+function mapToJson(map) {
+  return JSON.stringify([...map]);
+}
+function jsonToMap(jsonStr) {
+  return new Map(JSON.parse(jsonStr));
 }
 
 function loadYjsDoc(room) {
@@ -27,12 +38,17 @@ function loadYjsDoc(room) {
   if (!docsMap[room]) {
     const ydoc = new Y.Doc();
     provider = new WebsocketProvider(YJS_SERVER, room, ydoc);
-    provider.on('event', (ele) => { console.log(ele);})
     const type = ydoc.getText(room);
     provider.awareness.setLocalStateField('user', {
       name: username,
       color: getCursorColor()
     })
+    setInterval(() => {
+      const states = provider.awareness.getStates();
+      console.log('JSONified states');
+      console.log(mapToJson(states));
+    }, 1000*10);
+  
     editor = loadQuill();
     binding = new QuillBinding(type, editor, provider.awareness);
     window.example = { provider, ydoc, type, binding, Y }
@@ -46,7 +62,6 @@ function loadYjsDoc(room) {
       name: username,
       color: getCursorColor()
     });
-    provider.on('event', (ele) => { console.log(ele);})
     binding = new QuillBinding(type, editor, provider.awareness);
     window.example = { provider, ydoc, type, binding, Y }
   }
@@ -99,6 +114,7 @@ window.addEventListener('load', () => {
   const rooms = ['demo1', 'demo2', 'demo3'];
   populateSelect('select-room', rooms);
   const usernameBox = document.getElementById('username');
+  usernameBox.setAttribute('value', username);
   console.log('username', usernameBox.value);
   username = usernameBox.value;
   editor = loadQuill();
