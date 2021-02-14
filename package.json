@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run start:yjs & npm run start:express",
-    "start:yjs": "DEBUG=y*,-y:connector-message HOST=0.0.0.0 PORT=3312 YPERSISTENCE=./dbDir node ./node_modules/y-websocket/bin/server.js",
+    "start:yjs": "YPERSISTENCE=./dbDir HOST=0.0.0.0 PORT=11569 node ./node_modules/y-websocket/bin/server.js",
     "start:express": "node ./bin/www",
     "fe:serve": "webpack serve --progress --content-base client/",
     "fe:dist": "webpack --mode=production",
