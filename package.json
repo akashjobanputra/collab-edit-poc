@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run start:yjs & npm run start:express",
+    "start": "npm run start:express",
     "start:yjs": "YPERSISTENCE=./dbDir HOST=:: PORT=11569 node ./node_modules/y-websocket/bin/server.js",
-    "start:express": "node ./bin/www",
+    "start:express": "YPERSISTENCE=./dbDir node app.js",
     "fe:serve": "webpack serve --progress --content-base client/",
     "fe:dist": "webpack --mode=production",
     "heroku-postbuild": "npm run fe:dist"
@@ -24,7 +24,9 @@
     "yjs": "^13.5.0"
   },
   "devDependencies": {
+    "css-loader": "^5.0.2",
     "html-webpack-plugin": "^5.0.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

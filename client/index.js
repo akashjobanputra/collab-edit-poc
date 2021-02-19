@@ -1,3 +1,4 @@
+import './style.css';
 import Quill from "quill";
 import * as Y from 'yjs';
 import { QuillBinding } from 'y-quill';
@@ -175,3 +176,12 @@ function populateSelect(target, options){
  * 
  * // "start:yjs:ser": "YPERSISTENCE=./dbDir DEBUG=y*,-y:connector-message node yjs-server.js --port 3312",
  */
+
+/*
+const WebSocket = require('ws');
+var ws = new WebSocket('wss://collab-editor-vel.herokuapp.com:11569')
+ws.on('connection', function (...args) { console.log('connection'); console.log(args); })
+ws.on('sync', function (...args) { console.log('sync'); console.log(args); })
+ws.on('update', function (...args) { console.log('update'); console.log(args); })
+
+*/
