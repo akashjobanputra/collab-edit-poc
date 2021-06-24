@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Yjs Quill Example</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.quilljs.com/1.3.6/quill.snow.css"
+      async
+      defer
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <title>Yjs Quill Example</title>
-  <link rel=stylesheet href="//cdn.quilljs.com/1.3.6/quill.snow.css" async defer>
-  <link rel="stylesheet" href="./style.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="header">
-      <h2>Collaborative Editor</h2>
-    </div>
-    <div class="main">
-      <div id="editor" style="height: 500px;"></div>
-    </div>
-    <div class="sidebar">
-      <table>
-        <tr>
-          <td>Connect/Disconnect:</td>
-          <td><button type="button" id="connect-btn">Disconnect</button></td>
-        </tr>
-        <tr>
-          <td>Select Room:</td>
-          <td><select id="select-room"></select></td>
-        </tr>
-        <tr>
-          <td>Username:</td>
-          <td><input type="text" size="10" id="username"></input></td>
-        </tr>
-      </table>
-      <div style="height: 10pt;">
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Collaborative Editor</h2>
+      </div>
+      <div class="main">
+        <div id="editor" style="height: 500px"></div>
+      </div>
+      <div class="sidebar">
+        <table>
+          <tr>
+            <td>Connect/Disconnect:</td>
+            <td><button type="button" id="connect-btn">Disconnect</button></td>
+          </tr>
+          <tr>
+            <td>Select Room:</td>
+            <td><select id="select-room"></select></td>
+          </tr>
+          <tr>
+            <td>Username:</td>
+            <td><input type="text" size="10" id="username" /></td>
+          </tr>
+        </table>
+        <div style="height: 10pt"></div>
+      </div>
+      <div class="footer">
+        <p style="float: right; margin-right: 10pt">
+          Find the blog at
+          <a
+            href="https://www.velotio.com/engineering-blog/build-collaborative-editor-using-quill-and-yjs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >velotio.com/engineering-blog</a>
+        </p>
       </div>
     </div>
-    <div class="footer">
-      <p style="float: right; margin-right: 10pt;">WIP</p>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
